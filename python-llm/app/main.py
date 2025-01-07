@@ -72,8 +72,8 @@ async def summarize(data: TextData):
     summary = await llm_service.summarize_text(text, lang)
 
     return {
-        "summary": summary,
-        "translated_text": translated_text
+        "resumo": summary,
+        "texto_traduzido": translated_text
     }
 
 @app.get("/")

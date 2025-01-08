@@ -10,6 +10,9 @@
 import { Router, Request, Response } from 'express';
 import { TasksRepository } from '../repositories/tasksRepository';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const router = Router();
 const tasksRepo = new TasksRepository();
@@ -41,12 +44,14 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     try {
-        const response = await axios.post('http://localhost:8000/summarize', { text, lang });
-        const { summary, translated_text } = response.data;
+        const pythonresponse = await axios.post('http://127.0.0.1:8000/summarize', { text, lang });
+
+        const { summary, translated_text } = pythonresponse.data;
 
         const task = tasksRepo.addTask(text, summary, lang, translated_text);
         res.status(201).json(task);
-    } catch (error) {
+    } catch (error:any) {
+        console.error("Error details:", error.response?.data || error.message);
         res.status(500).json({ message: "Error communicating with Python service" });
     }
 });

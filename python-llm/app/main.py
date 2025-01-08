@@ -1,12 +1,18 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from app.services.llm_service import LLMService
+
+
 app = FastAPI()
 llm_service = LLMService()
+
 
 class SummarizeRequest(BaseModel):
     text: str
     lang: str
+
+
+
 
 @app.get("/")
 async def root():

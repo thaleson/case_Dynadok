@@ -31,6 +31,9 @@ const tasksRepo = new TasksRepository();
  * @throws {400} If 'text' or 'lang' is missing, or if the language is not supported.
  * @throws {500} If there is an error communicating with the Python service.
  */
+
+
+
 router.post('/', async (req: Request, res: Response) => {
     const { text, lang } = req.body;
 
@@ -44,7 +47,8 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     try {
-        const pythonresponse = await axios.post('http://127.0.0.1:8000/summarize', { text, lang });
+        const pythonServiceUrl = process.env.PYTHON_SERVICE_URL!;
+        const pythonresponse = await axios.post(pythonServiceUrl, { text, lang });
 
         const { summary, translated_text } = pythonresponse.data;
 

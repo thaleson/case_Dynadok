@@ -1,101 +1,102 @@
-import { Router, Request, Response } from "express";
-import { TasksRepository } from "../repositories/tasksRepository";
+/**
+ * Express router for handling task-related API endpoints.
+ * 
+ * The router defines routes for creating, retrieving, and deleting tasks.
+ * It communicates with a tasks repository and a Python service for text summarization.
+ * 
+ * @module tasksRouter
+ */
+
+import { Router, Request, Response } from 'express';
+import { TasksRepository } from '../repositories/tasksRepository';
+import axios from 'axios';
 
 const router = Router();
-const tasksRepository = new TasksRepository();
+const tasksRepo = new TasksRepository();
 
 /**
- * POST: Creates a task and requests a summary from the Python service.
+ * POST endpoint for creating a new task.
  * 
- * This endpoint accepts a `text` and `lang` in the request body, validates the input,
- * creates a new task, requests a summary from the Python service, and then updates 
- * the task with the generated summary.
+ * The endpoint expects a JSON body with 'text' and 'lang' properties. 
+ * It communicates with a Python service to summarize the text and returns the task with 
+ * the original text, summary, and translated text.
  * 
- * The `lang` must be one of the supported languages: "pt", "en", or "es". If the 
- * language is not supported or the `text` is missing, it will return a 400 error 
- * with a relevant message.
- * 
- * On successful task creation, a 201 status is returned with the created task 
- * and a success message.
- * 
- * @param req - The request object containing the body data (`text` and `lang`).
- * @param res - The response object for sending the result back to the client.
- * @returns {Response} - The response with the result of the task creation process.
+ * @route POST /tasks
+ * @param {string} req.body.text - The text to summarize.
+ * @param {string} req.body.lang - The language of the text.
+ * @returns {Task} The created task object.
+ * @throws {400} If 'text' or 'lang' is missing, or if the language is not supported.
+ * @throws {500} If there is an error communicating with the Python service.
  */
-router.post("/", async (req: Request, res: Response) => {
-  try {
+router.post('/', async (req: Request, res: Response) => {
     const { text, lang } = req.body;
-    
-    // Validate input data
-    if (!text) {
-      return res.status(400).json({ error: 'Campo "text" é obrigatório.' });
-    }
-    if (!lang || !['pt', 'en', 'es'].includes(lang)) {
-      return res.status(400).json({ error: 'Idioma não suportado. Use "pt", "en" ou "es".' });
+
+    if (!text || !lang) {
+        return res.status(400).json({ message: "Text and language are required" });
     }
 
-    // Create the task with language
-    const task = tasksRepository.createTask(text, lang);
+    const supportedLangs = ['pt', 'en', 'es'];
+    if (!supportedLangs.includes(lang)) {
+        return res.status(400).json({ message: "Language not supported" });
+    }
 
-    // Request task summary from Python service (mocked here)
-    const summary = "Resumo da tarefa"; // Placeholder for actual summary service call
+    try {
+        const response = await axios.post('http://localhost:8000/summarize', { text, lang });
+        const { summary, translated_text } = response.data;
 
-    // Update the task with the summary
-    tasksRepository.updateTask(task.id, summary);
-
-    return res.status(201).json({
-      message: "Tarefa criada com sucesso!",
-      task: tasksRepository.getTaskById(task.id),
-    });
-  } catch (error) {
-    console.error("Erro ao criar tarefa:", error);
-    return res
-      .status(500)
-      .json({ error: "Ocorreu um erro ao criar a tarefa." });
-  }
+        const task = tasksRepo.addTask(text, summary, lang, translated_text);
+        res.status(201).json(task);
+    } catch (error) {
+        res.status(500).json({ message: "Error communicating with Python service" });
+    }
 });
 
 /**
- * GET: Lists all tasks.
+ * GET endpoint for retrieving all tasks.
  * 
- * This endpoint retrieves and returns all tasks stored in the task repository.
- * 
- * @param req - The request object.
- * @param res - The response object for sending the result back to the client.
- * @returns {Response} - The response containing a list of all tasks.
+ * @route GET /tasks
+ * @returns {Task[]} An array of all tasks.
  */
-router.get("/", (req: Request, res: Response) => {
-  const tasks = tasksRepository.getAllTasks();
-  return res.json(tasks);
+router.get('/', (req: Request, res: Response) => {
+    res.json(tasksRepo.getTasks());
 });
 
 /**
- * DELETE: Deletes a task by its ID.
+ * GET endpoint for retrieving a task by its ID.
  * 
- * This endpoint deletes a specific task by its `id`. It first validates that the 
- * `id` is a valid number. If the task with the given `id` exists, it is deleted. 
- * If the task is successfully deleted, a 200 status is returned with a success message.
- * If the task is not found, a 404 status with an error message is returned.
- * 
- * @param req - The request object containing the `id` parameter.
- * @param res - The response object for sending the result back to the client.
- * @returns {Response} - The response indicating whether the task was deleted successfully or not.
+ * @route GET /tasks/:id
+ * @param {string} req.params.id - The ID of the task to retrieve.
+ * @returns {Task} The task object if found.
+ * @throws {404} If the task with the given ID is not found.
  */
-router.delete("/:id", (req: Request, res: Response) => {
-  const taskId = parseInt(req.params.id, 10); // Convert the ID to a number
-  
-  // Validate the ID
-  if (isNaN(taskId)) {
-    return res.status(400).json({ error: "ID inválido." });
-  }
+router.get('/:id', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const task = tasksRepo.getTaskById(id);
 
-  const taskDeleted = tasksRepository.deleteTask(taskId);
-  
-  if (taskDeleted) {
-    return res.status(200).json({ message: "Tarefa deletada com sucesso!" });
-  } else {
-    return res.status(404).json({ error: "Tarefa não encontrada." });
-  }
+    if (!task) {
+        return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.json(task);
+});
+
+/**
+ * DELETE endpoint for deleting a task by its ID.
+ * 
+ * @route DELETE /tasks/:id
+ * @param {string} req.params.id - The ID of the task to delete.
+ * @returns {void} Returns a 204 status code if the task is deleted.
+ * @throws {404} If the task with the given ID is not found.
+ */
+router.delete('/:id', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const success = tasksRepo.deleteTask(id);
+
+    if (!success) {
+        return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.status(204).send();
 });
 
 export default router;

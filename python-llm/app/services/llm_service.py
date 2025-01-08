@@ -1,6 +1,9 @@
 import os
 from langchain_openai import OpenAI
 from googletrans import Translator
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from a.env file
 
 class LLMService:
     """

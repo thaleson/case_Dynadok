@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from services.llm_service import LLMService
-
+from app.services.llm_service import LLMService
 app = FastAPI()
 llm_service = LLMService()
 

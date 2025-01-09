@@ -105,7 +105,7 @@ router.delete('/:id', (req: Request, res: Response) => {
         return res.status(404).json({ message: "Task not found" });
     }
 
-    res.status(204).send();
+    res.status(200).json({ message: `Task ${id} deleted successfully` });
 });
 
 export default router;

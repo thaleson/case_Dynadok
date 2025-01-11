@@ -3,6 +3,7 @@ from langchain.prompts import PromptTemplate
 from langchain_openai import OpenAI
 from googletrans import Translator
 from dotenv import load_dotenv
+import uuid
 
 load_dotenv()  # Load environment variables from a .env file
 
@@ -37,29 +38,36 @@ class LLMService:
 
         Args:
             text (str): The text to be summarized.
-            lang (str): The language code for summarization output (e.g., 'en', 'fr', 'es').
+            lang (str): The language code for translation and summarization (e.g., 'en', 'fr', 'es').
 
         Returns:
-            dict: A dictionary with the summary in the requested language.
+            dict: A dictionary with the summary and metadata in the requested language.
         """
-        # Translate the text to the requested language (optional if text is already in the desired language)
+        # Generate a unique ID for the task
+        task_id = str(uuid.uuid4())
+
+        # Translate the text to the requested language
         translated_text = await self.translate_text(text, lang)
 
         # Use a LangChain prompt to customize the summarization
         prompt_template = PromptTemplate(
             template=(
-                "Provide a concise summary of the following text in {lang}:\n\n"
-                "{text}\n\n"
-                "Summary:"
+                "Summarize the following text in {lang} in no more than 20 words, "
+                "keeping it clear and concise:\n\n{text}\n\nSummary:"
             )
         )
-        prompt = prompt_template.format(lang=lang, text=text)
+        prompt = prompt_template.format(lang=lang, text=translated_text)
 
         # Generate the summary using the OpenAI model
         summary = self.llm.invoke(prompt)
 
+        # Ensure the summary is concise by taking the first 20 words, if needed
+        summary_concise = " ".join(summary.split()[:20]).strip()
+
         # Return the result in JSON format
         return {
-            "summary": summary.strip(),
-            "translated_text": translated_text
+            "id": task_id,
+            "text": text,
+            "summary": summary_concise,
+            "lang": summary_concise  
         }

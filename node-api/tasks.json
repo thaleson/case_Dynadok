@@ -1,30 +1,26 @@
 [
   {
     "id": "1",
-    "text": "Diagnósticos médicos e decisões jurídicas: o papel da IA. A justiça e a Medicina são considerados campos de alto risco.",
-    "summary": " Em ambos, erros podem levar a consequências graves, como a perda de vidas ou a injustiça. Por isso, a IA tem sido cada vez mais utilizada para auxiliar profissionais dessas áreas. Na medicina, a IA pode ajudar no diagnóstico de doenças, na identificação de padrões em exames de imagem e na personalização de tratamentos. No campo jurídico, a IA pode auxiliar na análise de contratos, na previsão de resultados de processos e na identificação de jurisprudências relevantes. No entanto, a utilização da IA também traz desafios, como a necessidade de garantir a privacidade dos dados e a transparência dos algoritmos. Além disso, é preciso garantir que a IA seja usada como ferramenta de apoio e não como substituta da tomada de decisão humana. A IA pode melhorar a eficiência e a precisão, mas a responsabilidade final deve sempre ser dos profissionais humanos. **Summary:**\n\nMedical diagnostics and legal decisions are high-risk fields where errors can have severe consequences. AI is increasingly being used to assist professionals in both areas.",
-    "lang": "en",
-    "translatedText": "Medical diagnoses and legal decisions: the role of AI. Justice and Medicine are considered high-risk fields."
+    "text": "Diagnósticos médicos e decisões jurídicas: o papel da IA A justiça e a Medicina são considerados campos de alto risco. Neles é mais urgente do que em qualquer outra área estabelecer sistemas para que os humanos tenham sempre a decisão final.",
+    "summary": "IA auxilia em decisões médicas e jurídicas, mas a palavra final deve ser sempre humana devido ao alto risco envolvido.",
+    "lang": "pt"
+  },
+  {
+    "id": "2",
+    "text": "Os especialistas em IA trabalham para garantir a confiança dos usuários, para que o sistema seja transparente, que proteja as pessoas e que os humanos estejam no centro das decisões.",
+    "summary": "AI experts focus on building trust, transparency, safety, and human-centric decision-making in AI systems.",
+    "lang": "en"
   },
   {
     "id": "3",
-    "text": "Diagnósticos médicos e decisões jurídicas: o papel da IA. A justiça e a Medicina são considerados campos de alto risco.",
-    "summary": " Em ambos, erros podem levar a consequências graves, como a perda de vidas ou a injustiça. Por isso, a IA tem sido cada vez mais utilizada para auxiliar profissionais dessas áreas. Na medicina, a IA pode ajudar no diagnóstico de doenças, na identificação de padrões em exames de imagem e na personalização de tratamentos. No campo jurídico, a IA pode auxiliar na análise de contratos, na previsão de resultados de processos e na identificação de jurisprudências relevantes. No entanto, a utilização da IA também traz desafios, como a necessidade de garantir a privacidade dos dados e a transparência dos algoritmos. Além disso, é preciso garantir que a IA seja usada como ferramenta de apoio e não como substituta da tomada de decisão humana. A IA pode melhorar a eficiência e a precisão, mas a responsabilidade final deve sempre ser dos profissionais humanos. **Summary:**\n\nMedical diagnostics and legal decisions are high-risk fields where errors can have severe consequences. AI is increasingly being used to assist professionals in both areas.",
-    "lang": "pt",
-    "translatedText": "Diagnósticos médicos e decisões jurídicas: o papel da IA. A justiça e a Medicina são considerados campos de alto risco."
-  },
-  {
-    "id": "3",
-    "text": "Diagnósticos médicos e decisões jurídicas: o papel da IA. A justiça e a Medicina são considerados campos de alto risco.",
-    "summary": " Em ambos, erros podem levar a consequências graves, como a perda de vidas ou a injustiça. Por isso, a IA tem sido cada vez mais utilizada para auxiliar profissionais dessas áreas. Na medicina, a IA pode ajudar no diagnóstico de doenças, na identificação de padrões em exames de imagem e na personalização de tratamentos. No campo jurídico, a IA pode auxiliar na análise de contratos, na previsão de resultados de processos e na identificação de jurisprudências relevantes. No entanto, a utilização da IA também traz desafios, como a necessidade de garantir a privacidade dos dados e a transparência dos algoritmos. Além disso, é preciso garantir que a IA seja usada como ferramenta de apoio e não como substituta da tomada de decisão humana. A IA pode melhorar a eficiência e a precisão, mas a responsabilidade final deve sempre ser dos profissionais humanos. **Summary:**\n\nMedical diagnostics and legal decisions are high-risk fields where errors can have severe consequences. AI is increasingly being used to assist professionals in both areas.",
-    "lang": "en",
-    "translatedText": "Medical diagnoses and legal decisions: the role of AI. Justice and Medicine are considered high-risk fields."
+    "text": "Aqui entra em jogo o desafio do \"doutor centauro\". Centauros são modelos híbridos de algoritmo que combinam análise formal de máquina e intuição humana.",
+    "summary": "El \"doctor centauro\" combina análisis automático y intuición humana en modelos algorítmicos híbridos. To fit within the 20-word limit, here",
+    "lang": "es"
   },
   {
     "id": "4",
-    "text": "Diagnósticos médicos e decisões jurídicas: o papel da IA. A justiça e a Medicina são considerados campos de alto risco.",
-    "summary": " Em ambos, erros podem levar a consequências graves, como a perda de vidas ou a injustiça. Por isso, a IA tem sido cada vez mais utilizada para auxiliar profissionais dessas áreas. Na medicina, a IA pode ajudar no diagnóstico de doenças, na identificação de padrões em exames de imagem e na personalização de tratamentos. No campo jurídico, a IA pode auxiliar na análise de contratos, na previsão de resultados de processos e na identificação de jurisprudências relevantes. No entanto, a utilização da IA também traz desafios, como a necessidade de garantir a privacidade dos dados e a transparência dos algoritmos. Além disso, é preciso garantir que a IA seja usada como ferramenta de apoio e não como substituta da tomada de decisão humana. A IA pode melhorar a eficiência e a precisão, mas a responsabilidade final deve sempre ser dos profissionais humanos. **Summary:**\n\nMedical diagnostics and legal decisions are high-risk fields where errors can have severe consequences. AI is increasingly being used to assist professionals in both areas.",
-    "lang": "en",
-    "translatedText": "Medical diagnoses and legal decisions: the role of AI. Justice and Medicine are considered high-risk fields."
+    "text": "Um \"médico centauro + um sistema de IA\" melhora as decisões que os humanos tomam por conta própria e que os sistemas de IA tomam por conta própria.",
+    "summary": "Médico centauro + IA melhora decisões humanas e de IA. To keep it under 20 words, here's a more concise",
+    "lang": "pt"
   }
 ]

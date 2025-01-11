@@ -1,0 +1,255 @@
+/* Corpo da aplicação */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0a1d37; /* Azul escuro para o fundo */
+  color: #fff; /* Texto claro para contraste */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-y: auto; /* Habilita rolagem vertical */
+}
+
+h1 {
+  text-align: center;
+  color: #00bcd4; /* Azul ciano para dar um toque futurista */
+  margin: 20px 0;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* Contêiner principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 100% da altura da tela */
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto; /* Permite rolar para baixo */
+}
+
+/* Estilo do contêiner das tarefas */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: linear-gradient(145deg, #1f3c5a, #0a1d37); /* Gradiente futurista de azul */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  backdrop-filter: blur(10px); /* Efeito de desfoque */
+  overflow-y: auto; /* Permite rolagem para o conteúdo interno */
+  max-height: 80vh; /* Impede que o conteúdo ultrapasse 80% da altura da tela */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+ 
+}
+
+li {
+  margin: 10px 0;
+  padding: 10px;
+ 
+  background-color: #1f3c5a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  margin-right: 50px;
+  
+}
+
+/* Botão Adicionar Tarefa */
+button.add-button {
+  background-color: #00bcd4; /* Azul ciano */
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 90%;
+  
+
+}
+
+button.add-button:hover {
+  background-color: #00e5ff; /* Azul claro ao passar o mouse */
+}
+
+/* Botão de deletar */
+.delete-button {
+  background-color: #f44336; /* Vermelho */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+
+
+
+
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Tom de vermelho mais escuro ao passar o mouse */
+}
+
+
+input {
+  width: 90%;;
+  padding: 10px;
+  font-size: 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+/* Estilos para os links */
+a {
+  color: #00bcd4; /* Azul ciano */
+  text-decoration: none; /* Remove o sublinhado */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00e5ff; /* Azul claro ao passar o mouse */
+  text-decoration: underline; /* Adiciona o sublinhado quando o link é hoverizado */
+}
+
+/* Estilos do footer */
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaa;
+}
+/* App.css */
+
+.loading-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+  
+}
+
+.loading-container p {
+  font-size: 1.5em;
+  color: #00bcd4; /* Cor azul ciano para destaque */
+  margin-bottom: 10px;
+}
+
+.loading-emoticons {
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  color: #00bcd4; /* Azul ciano para os emoticons */
+}
+
+.loading-emoticons span {
+  animation: spin 1.5s linear infinite; /* Animação de rotação */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+
+
+  
+}
+
+/* App.css */
+
+/* Estilização para o select */
+select {
+  width: 20%;
+  padding: 6px;
+  font-size: 16px;
+  background-color: #1f3c5a; /* Fundo com azul escuro */
+  color: white; /* Cor do texto em branco */
+  border: 2px solid #00bcd4; /* Borda azul ciano */
+  border-radius: 8px;
+  
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transição suave para os efeitos */
+}
+
+/* Estilo para o select ao focar */
+select:focus {
+  border-color: #00e5ff; /* Azul claro ao focar */
+  background-color: #1a3a56; /* Muda o fundo para um tom mais escuro */
+}
+
+/* Estilo para o select ao passar o mouse */
+select:hover {
+  border-color: #00e5ff; /* Bordas mais claras no hover */
+  background-color: #1a3a56; /* Fundo mais escuro no hover */
+}
+
+/* Estilização para o ícone do select (opcional) */
+select::-ms-expand {
+  display: none; /* Remove o ícone do select no IE */
+}
+
+/* Estilo do drop-down quando o select está aberto */
+select:focus::-ms-value {
+  background-color: #1a3a56; /* Cor de fundo quando estiver aberto no IE */
+}
+
+
+/* App.css */
+
+/* Estilização para o botão */
+button {
+  width: 30%;
+  padding: 5px;
+  background-color: #00bcd4; /* Azul ciano para o fundo */
+  color: white; /* Texto em branco */
+  font-size: 16px;
+  font-weight: bold; /* Texto em negrito para mais destaque */
+  border: none;
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer;
+  margin: 17px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+  margin-left: 15px;
+
+/* Efeito de hover (passar o mouse) */
+button:hover {
+  background-color: #00e5ff; /* Azul claro ao passar o mouse */
+  transform: scale(1.05); /* Aumento do botão para efeito de zoom */
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.2); /* Sombra suave no hover */
+}
+
+/* Efeito de clique (active) */
+button:active {
+  transform: scale(1); /* Desfaz o aumento do botão */
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3); /* Sombra mais intensa no clique */
+}
+
+/* Foco (quando o botão é clicado) */
+button:focus {
+  outline: none; /* Remove o contorno padrão */
+  border: 2px solid #00e5ff; /* Adiciona uma borda azul clara no foco */
+}
+}

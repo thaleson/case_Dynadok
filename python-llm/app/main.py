@@ -22,6 +22,6 @@ async def root():
 async def summarize(request: SummarizeRequest):
     try:
         result = await llm_service.summarize_text(request.text, request.lang)
-        return result
+        return {"summary":result['summary']}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

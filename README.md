@@ -1,4 +1,3 @@
-
 # LLM Summarizer API
 
 ## 🚀 Visão Geral
@@ -14,12 +13,14 @@ A API é composta por dois componentes principais:
 ## 🧑‍💻 Como Executar
 
 ### **Requisitos**
+- **React**: Versão mais atual.
 - **Node.js**: Versão 16 ou superior.
 - **Python**: Versão 3.8 ou superior.
 - **Git**: Para clonar o repositório.
 - **pip**: Gerenciador de pacotes do Python.
 - **npm**: Gerenciador de pacotes do Node.js.
 - **Token Hugging Face**: [Gere aqui](https://huggingface.co/settings/tokens).
+
 
 ---
 
@@ -53,7 +54,7 @@ A API é composta por dois componentes principais:
    ./setup.sh dev-python
    ```
 
-6. Acesse a API Nodeem **http://localhost:3006**.
+6. Acesse a API Node em **http://localhost:3006**.
 7. Acesse a API Python em **http://localhost:5001**.
 
 ---
@@ -136,6 +137,44 @@ A API é composta por dois componentes principais:
 
 ---
 
+## 🖥️ Front-End (React)
+
+Este projeto também inclui um **front-end desenvolvido com React** que permite a interação do usuário com a API de resumos. O usuário pode enviar textos para serem resumidos e visualizar o resumo gerado pela API de forma intuitiva.
+
+### **Estrutura do Front-End**
+- **React**: Utilizado para construir a interface dinâmica e responsiva.
+- **React Router**: Para navegação entre diferentes páginas, como a página inicial e a página de detalhes da tarefa.
+- **Axios**: Biblioteca para fazer requisições HTTP à API e manipular dados.
+- **State Management**: Utilização do **useState** e **useEffect** para gerenciar o estado da aplicação e realizar chamadas assíncronas.
+
+### **Funcionalidades do Front-End**
+1. **Página Inicial**: O usuário pode visualizar uma lista de tarefas (textos e resumos) já criadas, com a possibilidade de adicionar novas tarefas.
+2. **Página de Detalhes**: O usuário pode visualizar os detalhes de uma tarefa específica, incluindo o texto original, o resumo gerado e o idioma para o qual o texto foi traduzido.
+3. **Interatividade**: Navegação fácil entre as páginas, com feedback visual durante a criação das tarefas e exibição de dados carregados da API.
+
+### **Como Iniciar o Front-End**
+1. Instale as dependências do front-end:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+2. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm start
+   ```
+
+3. Acesse a aplicação front-end em **http://localhost:5173**.
+
+### **Arquitetura de Componentes**
+- **App.jsx**: Componente principal que gerencia as rotas e exibe a página inicial ou os detalhes das tarefas.
+- **AddTask.jsx**: Componente que adicionar nova  task.
+- **Tasks.jsx**: Componente que exibe a lista de tarefas.
+- **TaskDetail.jsx**: Componente que exibe os detalhes de uma tarefa específica, buscando os dados da API.
+
+
+---
+
 ## 🛠️ Endpoints da API
 
 ### **POST /tasks**:
@@ -185,4 +224,3 @@ Este projeto inclui uma pasta chamada **`test`**, que contém os códigos utiliz
 ## 🎉 Conclusão
 
 Esse projeto oferece uma integração eficiente entre Node.js e Python, utilizando LangChain para resumos textuais em múltiplos idiomas. O processo de instalação foi simplificado para diferentes sistemas operacionais, garantindo acessibilidade e flexibilidade. 
-

@@ -5,7 +5,7 @@ interface Task {
     text: string;
     summary: string;
     lang: string;
-    translatedText: string;
+
 }
 
 export class TasksRepository {

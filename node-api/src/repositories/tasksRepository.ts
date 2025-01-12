@@ -38,7 +38,7 @@ export class TasksRepository {
             text,
             summary,
             lang,
-            translatedText
+         
         };
         this.tasks.push(task);
         this.saveToFile();
